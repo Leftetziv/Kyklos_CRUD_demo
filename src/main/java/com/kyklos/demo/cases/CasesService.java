@@ -18,8 +18,18 @@ public class CasesService {
             return list;
         }
 
+        public ArrayList<Cases> getCaseByLastName(String lastName) {
+            ArrayList<Cases> list = new ArrayList<>();
+            casesRepo.getCasesByLastName(lastName).forEach(list::add);;
+            return list;
+        }
+
         public Cases getCaseById(Long id) {
-            return casesRepo.findById(id).orElseThrow(() -> new EntityNotFoundException());
+            try {
+                return casesRepo.findById(id).orElseThrow(() -> new EntityNotFoundException("Not Found"));
+            } catch (EntityNotFoundException e) {
+                return new Cases();
+            }
         }
 
         public Cases addCase(Cases Cases) {

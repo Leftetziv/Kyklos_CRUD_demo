@@ -23,6 +23,11 @@ public class CasesController {
         return new ResponseEntity<>(casesService.getAllCases(), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/cases/name/{lastName}")
+    ResponseEntity<ArrayList<Cases>> getCaseById(@PathVariable String lastName) {
+        return new ResponseEntity<>(casesService.getCaseByLastName(lastName), HttpStatus.OK);
+    }
+
     @GetMapping(path = "/cases/{id}")
     ResponseEntity<Cases> getCaseById(@PathVariable Long id) {
         return new ResponseEntity<Cases>(casesService.getCaseById(id), HttpStatus.OK);
