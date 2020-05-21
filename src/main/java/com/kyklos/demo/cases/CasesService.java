@@ -1,0 +1,37 @@
+package com.kyklos.demo.cases;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+
+@Service
+public class CasesService {
+
+        @Autowired
+        private CasesRepo casesRepo;
+
+        public ArrayList<Cases> getAllCases() {
+            ArrayList<Cases> list = new ArrayList<>();
+            casesRepo.findAll().forEach(list::add);
+            return list;
+        }
+
+        public Cases getCaseById(Long id) {
+            return casesRepo.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        }
+
+        public Cases addCase(Cases Cases) {
+            return casesRepo.save(Cases);
+        }
+
+        public Cases updateCase(Cases Cases) {
+            return casesRepo.save(Cases);
+        }
+
+        public void deleteCase(Long id) {
+            casesRepo.deleteById(id);
+        }
+    
+}
