@@ -20,7 +20,7 @@ public class CasesService {
 
         public ArrayList<Cases> getCaseByLastName(String lastName) {
             ArrayList<Cases> list = new ArrayList<>();
-            casesRepo.getCasesByLastName(lastName).forEach(list::add);;
+            casesRepo.getCasesByLastNameIsContaining(lastName).forEach(list::add);
             return list;
         }
 
