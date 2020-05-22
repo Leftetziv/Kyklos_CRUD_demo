@@ -58,19 +58,19 @@ public class Guardian {
         this.lastName = lastName;
     }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setaddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String getphoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setphoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
