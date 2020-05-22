@@ -1,5 +1,6 @@
 package com.kyklos.demo.patient;
 
+import com.kyklos.demo.patient.queries.MedicalDescriptionSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,39 +14,47 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
+    @Autowired
+    MedicalDescriptionSearch medicalDescriptionSearch;
+
     @RequestMapping("/hi")
     public ResponseEntity <String> sayHi() {
         return new ResponseEntity<>("Hi",HttpStatus.OK);
     }
 
     @GetMapping(path ="/patient")
-     public ResponseEntity<ArrayList<Patient>> getAllCases() {
-        return new ResponseEntity<>(patientService.getAllCases(), HttpStatus.OK);
+     public ResponseEntity<ArrayList<Patient>> getAllPatient() {
+        return new ResponseEntity<>(patientService.getAllPatient(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/patient/lastname/{lastName}")
-    ResponseEntity<ArrayList<Patient>> getCaseById(@PathVariable String lastName) {
-        return new ResponseEntity<>(patientService.getCaseByLastName(lastName), HttpStatus.OK);
+    ResponseEntity<ArrayList<Patient>> getPatientById(@PathVariable String lastName) {
+        return new ResponseEntity<>(patientService.getPatientByLastName(lastName), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/patient/medicaldescription/{medicaldescription}")
+    ArrayList<Patient> getPatientByMedicaldescription(@PathVariable String medicaldescription) {
+        return medicalDescriptionSearch.getPatientByMedicalDescriptionSearch(medicaldescription);
     }
 
     @GetMapping(path = "/patient/{id}")
-    ResponseEntity<Patient> getCaseById(@PathVariable Long id) {
-        return new ResponseEntity<Patient>(patientService.getCaseById(id), HttpStatus.OK);
+    ResponseEntity<Patient> getPatientById(@PathVariable Long id) {
+        return new ResponseEntity<Patient>(patientService.getPatientById(id), HttpStatus.OK);
     }
 
     @PostMapping (path = "/patient")
-    ResponseEntity<Patient> CreateCase(@RequestBody Patient patient) {
-        return new ResponseEntity<>(patientService.addCase(patient), HttpStatus.CREATED);
+    ResponseEntity<Patient> CreatePatient(@RequestBody Patient patient) {
+        return new ResponseEntity<>(patientService.addPatient(patient), HttpStatus.CREATED);
     }
 
     @PutMapping (path = "/patient")
-    ResponseEntity<Patient> UpdateCase(@RequestBody Patient patient) {
-        return new ResponseEntity<>(patientService.updateCase(patient), HttpStatus.OK);
+    ResponseEntity<Patient> UpdatePatient(@RequestBody Patient patient) {
+        return new ResponseEntity<>(patientService.updatePatient(patient), HttpStatus.OK);
     }
 
     @DeleteMapping (path = "/patient/{id}")
-    ResponseEntity<Void> DeleteCase(@PathVariable Long id) {
-        patientService.deleteCase(id);
+    ResponseEntity<Void> DeletePatient(@PathVariable Long id) {
+        patientService.deletePatient(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

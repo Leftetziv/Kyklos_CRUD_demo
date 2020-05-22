@@ -12,19 +12,19 @@ public class PatientService {
         @Autowired
         private PatientRepository PatientRepository;
 
-        public ArrayList<Patient> getAllCases() {
+        public ArrayList<Patient> getAllPatient() {
             ArrayList<Patient> list = new ArrayList<>();
             PatientRepository.findAll().forEach(list::add);
             return list;
         }
 
-        public ArrayList<Patient> getCaseByLastName(String lastName) {
+        public ArrayList<Patient> getPatientByLastName(String lastName) {
             ArrayList<Patient> list = new ArrayList<>();
             PatientRepository.getCasesByLastNameIsContaining(lastName).forEach(list::add);
             return list;
         }
 
-        public Patient getCaseById(Long id) {
+        public Patient getPatientById(Long id) {
             try {
                 return PatientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not Found"));
             } catch (EntityNotFoundException e) {
@@ -32,15 +32,15 @@ public class PatientService {
             }
         }
 
-        public Patient addCase(Patient Patient) {
+        public Patient addPatient(Patient Patient) {
             return PatientRepository.save(Patient);
         }
 
-        public Patient updateCase(Patient Patient) {
+        public Patient updatePatient(Patient Patient) {
             return PatientRepository.save(Patient);
         }
 
-        public void deleteCase(Long id) {
+        public void deletePatient(Long id) {
             PatientRepository.deleteById(id);
         }
     
