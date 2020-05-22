@@ -1,34 +1,34 @@
-package com.kyklos.demo.cases;
+package com.kyklos.demo.patient;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Cases {
+public class Patient {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String surName;
+    private String firstName;
     private String lastName;
     private String medicalDescription;
     private String generalComments;
 
-    public Cases() {
+    public Patient() {
     }
 
-    public Cases(String surName, String lastName, String medicalDescription, String generalComments) {
-        this.surName = surName;
+    public Patient(String firstName, String lastName, String medicalDescription, String generalComments) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.medicalDescription = medicalDescription;
         this.generalComments = generalComments;
     }
 
-    public Cases(Long id, String surName, String lastName, String medicalDescription, String generalComments) {
+    public Patient(Long id, String firstName, String lastName, String medicalDescription, String generalComments) {
         this.id = id;
-        this.surName = surName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.medicalDescription = medicalDescription;
         this.generalComments = generalComments;
@@ -42,12 +42,12 @@ public class Cases {
         this.id = id;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
