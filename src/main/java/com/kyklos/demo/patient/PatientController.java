@@ -32,9 +32,9 @@ public class PatientController {
         return new ResponseEntity<>(patientService.getPatientByLastName(lastName), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/patient/medicaldescription/{medicaldescription}")
-    ArrayList<Patient> getPatientByMedicaldescription(@PathVariable String medicaldescription) {
-        return medicalDescriptionSearch.getPatientByMedicalDescriptionSearch(medicaldescription);
+    @GetMapping(path = "/patient/medicaldescription/{medicalDescription}")
+    ResponseEntity<ArrayList<Patient>> getPatientByMedicalDescription(@PathVariable String medicalDescription) {
+        return new ResponseEntity<>(medicalDescriptionSearch.getPatientByMedicalDescriptionSearch(medicalDescription), HttpStatus.OK);
     }
 
     @GetMapping(path = "/patient/{id}")
