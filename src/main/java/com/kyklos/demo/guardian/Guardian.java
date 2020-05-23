@@ -1,8 +1,9 @@
 package com.kyklos.demo.guardian;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.kyklos.demo.patient.Patient;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Guardian {
@@ -16,22 +17,10 @@ public class Guardian {
     private String address;
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "guardian")
+    private Set<Patient> protectedMembers;
+
     public Guardian() {
-    }
-
-    public Guardian(String firstName, String lastName, String address, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Guardian(Long id, String firstName, String lastName, String address, String phoneNumber) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {
@@ -74,4 +63,12 @@ public class Guardian {
         this.phoneNumber = phoneNumber;
     }
 
+    public Set<Patient> getProtectedMembers() {
+        return protectedMembers;
+    }
+
+    public void setProtectedMembers(Set<Patient> protectedMembers) {
+        this.protectedMembers = protectedMembers;
+    }
 }
+

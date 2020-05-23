@@ -1,8 +1,9 @@
 package com.kyklos.demo.patient;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.kyklos.demo.guardian.Guardian;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Patient {
@@ -16,22 +17,11 @@ public class Patient {
     private String medicalDescription;
     private String generalComments;
 
+    @ManyToOne
+    @JoinColumn
+    private Guardian guardian;
+
     public Patient() {
-    }
-
-    public Patient(String firstName, String lastName, String medicalDescription, String generalComments) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.medicalDescription = medicalDescription;
-        this.generalComments = generalComments;
-    }
-
-    public Patient(Long id, String firstName, String lastName, String medicalDescription, String generalComments) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.medicalDescription = medicalDescription;
-        this.generalComments = generalComments;
     }
 
     public Long getId() {
@@ -74,4 +64,16 @@ public class Patient {
         this.generalComments = generalComments;
     }
 
+    public Guardian getGuardian() {
+        return guardian;
+    }
+
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
+    }
+
+//    @Override
+//    public String toString() {
+//        return id+" "+firstName+" "+lastName;
+//    }
 }
