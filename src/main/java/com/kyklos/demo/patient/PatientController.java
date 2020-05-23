@@ -2,6 +2,9 @@ package com.kyklos.demo.patient;
 
 import com.kyklos.demo.patient.queries.MedicalDescriptionSearch;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +20,12 @@ public class PatientController {
     @Autowired
     MedicalDescriptionSearch medicalDescriptionSearch;
 
+    @Value("${custom.welcomeMsg}")
+    String ServerReply;
+
     @RequestMapping("/hi")
-    public ResponseEntity <String> sayHi() {
-        return new ResponseEntity<>("Hi",HttpStatus.OK);
+    public ResponseEntity <String> ServerReply() {
+        return new ResponseEntity<>(ServerReply,HttpStatus.OK);
     }
 
     @GetMapping(path ="/patient")
