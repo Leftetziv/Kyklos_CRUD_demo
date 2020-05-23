@@ -1,11 +1,13 @@
 package com.kyklos.demo.guardian;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kyklos.demo.patient.Patient;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties("protectedMembers")
 public class Guardian {
 
     @Id

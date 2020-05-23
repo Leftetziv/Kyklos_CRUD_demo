@@ -1,11 +1,13 @@
 package com.kyklos.demo.patient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kyklos.demo.guardian.Guardian;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+//@JsonIgnoreProperties ("guardian")
 public class Patient {
 
     @Id
@@ -71,9 +73,4 @@ public class Patient {
     public void setGuardian(Guardian guardian) {
         this.guardian = guardian;
     }
-
-//    @Override
-//    public String toString() {
-//        return id+" "+firstName+" "+lastName;
-//    }
 }
