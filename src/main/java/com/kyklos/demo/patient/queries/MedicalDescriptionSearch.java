@@ -34,7 +34,7 @@ public class MedicalDescriptionSearch extends JdbcDaoSupport {
         String sql = "SELECT * FROM "+ schemaName +".patient where medical_description LIKE '%"+MedicalDescription+"%'";
         System.out.println(sql);
 
-        list = (ArrayList<Patient>) getJdbcTemplate().query(sql, new BeanPropertyRowMapper(Patient.class));
+        list = (ArrayList<Patient>) getJdbcTemplate().query(sql, new BeanPropertyRowMapper(PatientCustomQuery.class));
 
         return list;
     }
