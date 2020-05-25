@@ -34,7 +34,7 @@ public class PatientController {
     }
 
     @GetMapping(path = "/patient/lastname/{lastName}")
-    ResponseEntity<ArrayList<Patient>> getPatientById(@PathVariable String lastName) {
+    ResponseEntity<ArrayList<Patient>> getPatientByLastName(@PathVariable String lastName) {
         return new ResponseEntity<>(patientService.getPatientByLastName(lastName), HttpStatus.OK);
     }
 

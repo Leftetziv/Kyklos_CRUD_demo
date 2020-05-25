@@ -20,7 +20,7 @@ public class PatientService {
 
         public ArrayList<Patient> getPatientByLastName(String lastName) {
             ArrayList<Patient> list = new ArrayList<>();
-            PatientRepository.getCasesByLastNameIsContaining(lastName).forEach(list::add);
+            PatientRepository.getPatientByLastNameIsContaining(lastName).forEach(list::add);
             return list;
         }
 

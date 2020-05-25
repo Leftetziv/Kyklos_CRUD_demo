@@ -26,6 +26,14 @@ public class Patient {
     public Patient() {
     }
 
+    public Patient(Long id, String firstName, String lastName, String medicalDescription, String generalComments) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.medicalDescription = medicalDescription;
+        this.generalComments = generalComments;
+    }
+
     public Long getId() {
         return id;
     }

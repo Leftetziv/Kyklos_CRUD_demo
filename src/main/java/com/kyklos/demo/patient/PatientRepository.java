@@ -6,6 +6,5 @@ import java.util.ArrayList;
 
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-    ArrayList<Patient> getCasesByLastName(String lastName);
-    ArrayList<Patient> getCasesByLastNameIsContaining(String lastName);
+    ArrayList<Patient> getPatientByLastNameIsContaining(String lastName);
 }
