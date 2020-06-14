@@ -1,4 +1,4 @@
-package com.kyklos.demo.patient.queries;
+package com.kyklos.demo.api.patient.queries;
 
 public class PatientCustomQuery {
 

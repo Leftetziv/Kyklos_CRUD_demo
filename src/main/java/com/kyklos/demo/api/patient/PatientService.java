@@ -1,4 +1,4 @@
-package com.kyklos.demo.patient;
+package com.kyklos.demo.api.patient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

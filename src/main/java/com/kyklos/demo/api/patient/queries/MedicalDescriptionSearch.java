@@ -1,15 +1,12 @@
-package com.kyklos.demo.patient.queries;
+package com.kyklos.demo.api.patient.queries;
 
-import com.kyklos.demo.patient.Patient;
+import com.kyklos.demo.api.patient.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 
