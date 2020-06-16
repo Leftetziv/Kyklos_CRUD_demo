@@ -16,22 +16,26 @@ public class UserAccountController {
     UserAccountService userAccountService;
 
     @GetMapping(path ="/user")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<ArrayList<UserAccount>> getAllUser() {
         return new ResponseEntity<>(userAccountService.getAllUserAccount(), HttpStatus.OK);
     }
 
     @PostMapping(path = "/user")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<UserAccount> CreateUser(@RequestBody UserAccount userAccount) {
         return new ResponseEntity<>(userAccountService.addUserAccount(userAccount), HttpStatus.CREATED);
     }
 
     @DeleteMapping (path = "/user/{username}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<Void> DeleteUser(@PathVariable String username) {
         userAccountService.deleteUserAccount(username);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping(path ="/create_default_user")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void CreateDefaultUser() {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername("user");

@@ -4,27 +4,24 @@ import com.kyklos.demo.security.auth_credentials.db_user_accounts.UserAccount;
 import com.kyklos.demo.security.auth_credentials.db_user_accounts.UserAccountService;
 import com.kyklos.demo.security.roles_and_permissions.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
-
 
 @Repository("true")
 public class TrueApplicationUserDaoService implements ApplicationUserDao {
 
     private final PasswordEncoder passwordEncoder;
     final GlobalAdmin globalAdmin;
+    final UserAccountService userAccountService;
 
     @Autowired
-    public TrueApplicationUserDaoService(PasswordEncoder passwordEncoder, GlobalAdmin globalAdmin) {
+    public TrueApplicationUserDaoService(PasswordEncoder passwordEncoder, GlobalAdmin globalAdmin, UserAccountService userAccountService) {
         this.passwordEncoder = passwordEncoder;
         this.globalAdmin = globalAdmin;
+        this.userAccountService = userAccountService;
     }
-
-    @Autowired
-    UserAccountService userAccountService;
 
     @Override
     public Optional<ApplicationUser> selectApplicationUserByUsername(String username) {
@@ -41,22 +38,10 @@ public class TrueApplicationUserDaoService implements ApplicationUserDao {
         userAccounts.add(globalAdmin.GetGlobalAdmin());
 
         for (UserAccount user : userAccounts ) {
-
-//            Set<? extends GrantedAuthority> grantedAuthorities = null;
-//            for (Role r : Role.values()) {
-//                if (user.getRole().equals(r.name())) {
-//                    grantedAuthorities = r.getGrantedAuthorities();
-//                    break;
-//                }
-//            }
-
-            Set<? extends GrantedAuthority> grantedAuthorities = Role.valueOf(user.getRole()).getGrantedAuthorities();
-
-
             ApplicationUser applicationUser = new ApplicationUser(
                     user.getUsername(),
                     passwordEncoder.encode(user.getPassword()),
-                    grantedAuthorities,
+                    Role.valueOf(user.getRole()).getGrantedAuthorities(),
                     user.isAccountNonExpired(),
                     user.isAccountNonLocked(),
                     user.isCredentialsNonExpired(),

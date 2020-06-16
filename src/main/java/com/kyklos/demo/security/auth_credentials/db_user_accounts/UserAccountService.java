@@ -21,10 +21,6 @@ public class UserAccountService {
         return userAccountRepository.save(userAccount);
     }
 
-    public UserAccount updateUserAccount(UserAccount userAccount) {
-        return userAccountRepository.save(userAccount);
-    }
-
     public void deleteUserAccount(String username) {
         userAccountRepository.deleteById(username);
     }
