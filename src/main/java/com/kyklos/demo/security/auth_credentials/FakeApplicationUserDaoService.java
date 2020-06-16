@@ -1,7 +1,8 @@
 package com.kyklos.demo.security.auth_credentials;
 
 import com.google.common.collect.Lists;
-import com.kyklos.demo.security.roles_and_permissions.Role;
+import com.kyklos.demo.security.auth_credentials.db_user_accounts.UserAccount;
+import com.kyklos.demo.security.auth_credentials.db_user_accounts.UserAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,9 @@ public class FakeApplicationUserDaoService implements ApplicationUserDao {
     public FakeApplicationUserDaoService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
+    @Autowired
+    UserAccountService userAccountService;
 
     @Override
     public Optional<ApplicationUser> selectApplicationUserByUsername(String username) {

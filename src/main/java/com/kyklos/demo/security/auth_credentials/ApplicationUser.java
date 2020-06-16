@@ -8,13 +8,13 @@ import java.util.Set;
 
 public class ApplicationUser implements UserDetails {
 
-    private final String username;
-    private final String password;
-    private final Set<? extends GrantedAuthority> grantedAuthorities;
-    private final boolean isAccountNonExpired;
-    private final boolean isAccountNonLocked;
-    private final boolean isCredentialsNonExpired;
-    private final boolean isEnabled;
+    private  String username;
+    private  String password;
+    private  Set<? extends GrantedAuthority> grantedAuthorities;
+    private  boolean isAccountNonExpired;
+    private  boolean isAccountNonLocked;
+    private  boolean isCredentialsNonExpired;
+    private  boolean isEnabled;
 
     public ApplicationUser(String username,
                            String password,
@@ -65,5 +65,33 @@ public class ApplicationUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isEnabled;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setGrantedAuthorities(Set<? extends GrantedAuthority> grantedAuthorities) {
+        this.grantedAuthorities = grantedAuthorities;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        isAccountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        isCredentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
     }
 }
