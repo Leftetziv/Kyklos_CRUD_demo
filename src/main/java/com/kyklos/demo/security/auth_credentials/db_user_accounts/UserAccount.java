@@ -1,5 +1,8 @@
 package com.kyklos.demo.security.auth_credentials.db_user_accounts;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +17,9 @@ public class UserAccount {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
+
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     public UserAccount() {
     }

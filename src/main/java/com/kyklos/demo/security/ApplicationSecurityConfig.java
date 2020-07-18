@@ -39,6 +39,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtConfig = jwtConfig;
     }
 
+    /*
+    admin : pass123
+    user : password
+    user2 : password
+    */
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

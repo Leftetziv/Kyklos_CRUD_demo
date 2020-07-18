@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import static com.kyklos.demo.security.roles_and_permissions.Permission.*;
 
+
 public enum Role {
     ADMIN(Sets.newHashSet(READ, WRITE)),
     USER(Sets.newHashSet(READ));

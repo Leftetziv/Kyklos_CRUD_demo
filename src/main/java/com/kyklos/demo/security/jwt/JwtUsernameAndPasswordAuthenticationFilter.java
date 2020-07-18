@@ -1,11 +1,15 @@
 package com.kyklos.demo.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kyklos.demo.security.PasswordConfig;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.crypto.SecretKey;
@@ -14,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -24,7 +29,8 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
 
     public JwtUsernameAndPasswordAuthenticationFilter(AuthenticationManager authenticationManager,
                                                       JwtConfig jwtConfig,
-                                                      SecretKey secretKey) {
+                                                      SecretKey secretKey
+                                                      ) {
         this.authenticationManager = authenticationManager;
         this.jwtConfig = jwtConfig;
         this.secretKey = secretKey;
@@ -40,7 +46,8 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
 
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     authenticationRequest.getUsername(),
-                    authenticationRequest.getPassword());
+                    authenticationRequest.getPassword()
+                    );
 
             Authentication authenticate = authenticationManager.authenticate(authentication);
             return authenticate;
