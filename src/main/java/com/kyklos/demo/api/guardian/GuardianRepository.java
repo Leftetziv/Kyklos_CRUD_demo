@@ -1,4 +1,4 @@
-package com.kyklos.demo.guardian;
+package com.kyklos.demo.api.guardian;
 
 import org.springframework.data.repository.CrudRepository;
 

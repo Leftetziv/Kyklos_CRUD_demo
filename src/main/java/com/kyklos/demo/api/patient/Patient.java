@@ -1,10 +1,8 @@
-package com.kyklos.demo.patient;
+package com.kyklos.demo.api.patient;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kyklos.demo.guardian.Guardian;
+import com.kyklos.demo.api.guardian.Guardian;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 //@JsonIgnoreProperties ("guardian")
